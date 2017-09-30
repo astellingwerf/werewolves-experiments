@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="demo">
+<head>
+    <title>Hello AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="game.js"></script>
+</head>
+<body>
+<div ng-controller="Game">
+    <button ng-click="newGame()">Create new game</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Players</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in games | orderBy : 'id'">
+                <td>{{ x.id }}</td>
+                <td>{{ x.players }}</td>
+                <td>
+                    <input type="text" id="playerName{{ $index }}"/>
+                    <button ng-click="addPlayer(x.id, $index)">Add player</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
